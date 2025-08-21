@@ -1,4 +1,4 @@
-FROM rust:1.85-bookworm
+FROM rust:1.89.0-bookworm
 
 # Installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
@@ -16,6 +16,8 @@ RUN chmod +x /usr/local/bin/plantuml.jar
 # Installer mdBook et le préprocesseur PlantUML
 RUN cargo install mdbook
 RUN cargo install mdbook-plantuml --no-default-features --features plantuml-server
+RUN cargo install mdbook-mermaid
+
 
 # Définir le répertoire de travail
 WORKDIR /book

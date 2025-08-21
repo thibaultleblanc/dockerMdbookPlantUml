@@ -49,6 +49,8 @@ Se référer à la documentation de mdbook et mdbook-plantuml pour plus de déta
 
 ### Troubleshooting
 
+#### Plantuml
+
 - Si vous rencontrez des problèmes avec PlantUML, assurez-vous que le fichier `plantuml.jar` est correctement téléchargé et que les permissions d'exécution sont définies :
 
 ```sh
@@ -98,10 +100,33 @@ java -jar /usr/local/bin/plantuml.jar -version
 
 - Pour repartir de 0, supprimer les fichiers 'book.toml', et le dossier 'src/', puis exécuter 'mdbook init' depuis le conteneur
 
-### Contribution
+#### mdbook-mermaid
+
+Au premier lancement cela install mdbook-mermaid et cela déploie les fichiers
+```bash
+mdbook-mermaid install /book
+```
+
+Pour update la version de mermaid.min.js
+```bash
+# mdbook-mermaid prévoit une commande pour mettre à jour mermaid.js
+cd /tmp
+git clone https://github.com/badboy/mdbook-mermaid.git
+cd mdbook-mermaid
+cargo xtask 11.10.0
+mv ./src/bin/assets/* /book/
+# Note : il est aussi possible de récupérer une version plus récente en trouvant mermaid.min.js sur internet
+```
+
+## Future Improvments
+
+Automatiser l'installation des plugins mdbook.
+Rendre le conteneur davantage clé en main une fois build.
+
+## Contribution
 
 Les contributions sont les bienvenues ! Veuillez soumettre des pull requests ou ouvrir des issues pour signaler des bugs ou proposer des améliorations.
 
-### Licence
+## Licence
 
 Ce projet est sous licence APACHE. Voir le fichier [LICENSE](LICENSE) pour plus de détails.

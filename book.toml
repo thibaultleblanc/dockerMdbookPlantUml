@@ -8,3 +8,9 @@ title = "MyFirstBook"
 [preprocessor.plantuml]
 plantuml-cmd="java -jar /usr/local/bin/plantuml.jar"
 use-data-uris=true
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
