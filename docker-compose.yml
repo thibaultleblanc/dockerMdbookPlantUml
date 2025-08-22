@@ -6,8 +6,9 @@ services:
       context: .
       dockerfile: mdbook.dockerfile
     volumes:
-      - .:/book
-    working_dir: /book
+      - ./src:/app/src:ro
+      - ./book.toml:/app/book.toml:ro
+    working_dir: /app
     ports:
       - "3000:3000"
     command: sh -c "mdbook serve -n 0.0.0.0"

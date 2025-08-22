@@ -18,9 +18,13 @@ RUN cargo install mdbook
 RUN cargo install mdbook-plantuml --no-default-features --features plantuml-server
 RUN cargo install mdbook-mermaid
 
+# Copier les fichiers de configuration et installer mdbook-mermaid, et mettre à jour mermaid.min.js
+COPY book.toml /app/book.toml
+RUN mdbook-mermaid install /app
+RUN curl -L https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js -o /app/mermaid.min.js
 
 # Définir le répertoire de travail
-WORKDIR /book
+WORKDIR /app
 
 # Commande par défaut
 CMD ["mdbook", "serve", "-n", "0.0.0.0"]

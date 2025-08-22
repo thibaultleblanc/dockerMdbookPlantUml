@@ -2,7 +2,7 @@
 
 ## Mdbook
 
-Ce conteneur Docker permet de générer et de servir une documentation `mdbook` pour un projet Git. Il inclut également le support pour les diagrammes PlantUML.
+Ce conteneur Docker permet de générer et de servir une documentation `mdbook` pour un projet Git. Il inclut également le support pour les diagrammes PlantUML et Mermaid.
 La visualisation de la documentation se fait via le navigateur. Pour exporter la documentation en PDF, il suffit de cliquer sur imprimer.
 
 ## Setup
@@ -11,6 +11,8 @@ La visualisation de la documentation se fait via le navigateur. Pour exporter la
 
 - Docker
 - Docker Compose
+- Accès à sourceforge pour PlantUml
+- Accès à github pour Mermaid
 
 ### Installation
 
@@ -102,26 +104,11 @@ java -jar /usr/local/bin/plantuml.jar -version
 
 #### mdbook-mermaid
 
-Au premier lancement cela install mdbook-mermaid et cela déploie les fichiers
-```bash
-mdbook-mermaid install /book
-```
-
-Pour update la version de mermaid.min.js
-```bash
-# mdbook-mermaid prévoit une commande pour mettre à jour mermaid.js
-cd /tmp
-git clone https://github.com/badboy/mdbook-mermaid.git
-cd mdbook-mermaid
-cargo xtask 11.10.0
-mv ./src/bin/assets/* /book/
-# Note : il est aussi possible de récupérer une version plus récente en trouvant mermaid.min.js sur internet
-```
+Selon les schema utilisés il peut être nécessaire de mettre à jour la version de mermaid.min.js utilisée. Le plus simple est de faire un curl sur le CDN.
 
 ## Future Improvments
 
-Automatiser l'installation des plugins mdbook.
-Rendre le conteneur davantage clé en main une fois build.
+Rien pour le moment.
 
 ## Contribution
 
